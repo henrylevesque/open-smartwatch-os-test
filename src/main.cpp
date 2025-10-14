@@ -32,6 +32,7 @@
 #endif
 #include "assets/img/icons/brickbreaker.png.h"
 #include "./apps/games/brick_breaker.h"
+#include "apps/games/OswAppDoom.h"
 #include "assets/img/icons/snake.png.h"
 #include "./apps/games/snake_game.h"
 #ifdef OSW_FEATURE_WIFI
@@ -275,6 +276,11 @@ void loop() {
 #if GAME_BRICK_BREAKER == 1
         static OswAppBrickBreaker gameBrickBreaker;
         main_mainDrawer.registerApp(LANG_GAMES, new OswAppV2Compat("osw.game.brick", "Brick Breaker", gameBrickBreaker, true, brickbreaker_png));
+#endif
+
+#if GAME_DOOM == 1
+        static OswAppDoom gameDoom;
+        main_mainDrawer.registerApp(LANG_GAMES, new OswAppV2Compat("osw.game.doom", "DOOM (stub)", gameDoom, true));
 #endif
 
 #ifdef OSW_FEATURE_LUA
