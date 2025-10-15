@@ -124,6 +124,12 @@ target_link_libraries(emulator.run LINK_PUBLIC
     cmdline
     utest
 )
+
+# tinydoom demo library (used by doom_shim for emulator)
+file(GLOB_RECURSE SOURCES_TINYDOOM ./lib/tinydoom/*.cpp)
+add_library(tinydoom STATIC ${SOURCES_TINYDOOM})
+target_include_directories(tinydoom PUBLIC ./lib/tinydoom)
+target_link_libraries(emulator.run LINK_PUBLIC tinydoom)
 target_compile_definitions(emulator.run PUBLIC
     OSW_TARGET_PLATFORM_HEADER="platform/EMULATOR.h"
     OSW_EMULATOR=1
