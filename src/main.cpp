@@ -279,8 +279,8 @@ void loop() {
 #endif
 
 #if GAME_DOOM == 1
-        static OswAppDoom gameDoom;
-        main_mainDrawer.registerApp(LANG_GAMES, new OswAppV2Compat("osw.game.doom", "DOOM (stub)", gameDoom, true));
+        // Register DOOM as a native v2 app (lazy) so it is only instantiated when the user opens it.
+        main_mainDrawer.registerAppLazy<OswAppDoom>(LANG_GAMES);
 #endif
 
 #ifdef OSW_FEATURE_LUA
